@@ -85,10 +85,10 @@ export class NewPageComponent implements OnInit {
     dialogRef.afterClosed()
       .pipe(
         filter((result:boolean) => result),
-        switchMap((result) => this.heroesService.deleteHeroById(this.currentHero.id)),
+        switchMap(() => this.heroesService.deleteHeroById(this.currentHero.id)),
         filter((wasDeleted:boolean) => wasDeleted),
       )
-      .subscribe(result => {
+      .subscribe(() => {
         this.router.navigate(['/heroes']);
       })
 
